@@ -764,6 +764,18 @@ mvn test -o -pl kof-compiler,kof-script,kof-c-compiler,kof-cli -am \
 > `~1207/59/3-skip`. Ambos os estados são "suíte verde" para a sua lane:
 > o que importa é não ter falha FORA do par riscv/aarch.
 
+> **Rodando num dev host Windows puro (sem Linux/WSL):** TODO teste Native
+> (x86_64 incluído, não só riscv/aarch) falha com `as not available`
+> (COMP001) — falta o assembler/linker Linux (`as`/`ld` reais, ELF +
+> `libc.so.6`; um `as` do MinGW não serve, gera PE/COFF). Isso não é bug do
+> compilador nem falha nova sua. Ver
+> [`docs/native-windows-toolchain.md`](docs/native-windows-toolchain.md)
+> para rodar via WSL (sem instalar nada no Windows) — inclui uma armadilha
+> real do `wsl.exe` que perde variáveis de shell em silêncio se você não usar
+> `-e`/`--exec` (achado + reportado a montante em
+> [microsoft/WSL#41598](https://github.com/microsoft/WSL/issues/41598)
+> durante o KOF-SBD-001, 13/09).
+
 Para validar um snippet isolado (ex.: confirmar se um idiom compila),
 use o harness do projeto ou crie um teste E2E mínimo no pacote da área.
 
