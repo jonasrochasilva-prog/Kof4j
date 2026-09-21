@@ -25,6 +25,7 @@ updates:
 
   - package-ecosystem: "github-actions"
     directory: "/"
+    target-branch: "beta-0.5.0"
     schedule:
       interval: "weekly"
       day: "monday"
